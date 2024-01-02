@@ -10,8 +10,8 @@
 
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 
-require(__DIR__ . '/../splynx-addon-base/vendor/autoload.php');
-require(__DIR__ . '/../splynx-addon-base/vendor/yiisoft/yii2/Yii.php');
+require(__DIR__ . '/../splynx-addon-base-2/vendor/autoload.php');
+require(__DIR__ . '/../splynx-addon-base-2/vendor/yiisoft/yii2/Yii.php');
 
 $baseDir = __DIR__;
 $configPath = $baseDir . '/config/console.php';
