@@ -1,0 +1,33 @@
+<div>
+
+    {% set form = form_begin({
+    'id': 'payment-form',
+    'options': {
+    'class': 'form-horizontal'
+    },
+    'fieldConfig': {
+    'template': "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
+    'labelOptions': {'class': 'col-lg-2 control-label'},
+    }
+    }) | raw %}
+
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form.field(model, 'amount') | raw }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-12">
+                {{ Html.submitButton(
+                'Pay', {
+                    'class': 'btn btn-success'
+                }) | raw }}
+            </div>
+        </div>
+    </div>
+
+    {{ form_end() }}
+
+</div>

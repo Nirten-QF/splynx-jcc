@@ -1,0 +1,55 @@
+<div>
+<script src="assets/md5.js"></script>
+<script src="assets/sha1.js"></script>
+    {% if process_to_payment == true %}
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <h4>Pay invoice #{{ model.getInvoice().number }}</h4>
+                        <br>
+                        <ul class="list-unstyled">
+                            <li>
+                                Invoice total: {{ model.getAmount() }} {{ currency }}
+                            </li>
+                            {% if model.isFee() %}
+                                <li>
+                                    Fee: {{ model.getFeeAmount() }} {{ currency }}
+                                </li>
+                                <li>
+                                    Total: {{ model.getTotalAmount() }} {{ currency }}
+                                </li>
+                            {% endif %}
+                        </ul>
+                        <br>
+
+                        <form action="{{jcc_url}}" method="post" target="_parent" name="vm_jcc_form" id="vm_jcc_form"><a href="javascript:void(0);" onclick="javascript:document.getElementById('vm_jcc_form').submit()"><img src="assets/jcc.png" alt="Redirecting to pay with JCC Payment!" title="Redirecting to pay with JCC Payment!" /></a><br>
+						<input type="hidden" name="Version" value="{{Version}}" />
+						<input type="hidden" name="MerID" value="{{MerID}}" />
+						<input type="hidden" name="AcqID" value="{{AcqID}}" />
+						<input type="hidden" name="MerRespURL" value="{{MerRespURL}}" />
+						<input type="hidden" name="PurchaseAmt" value="{{PurchaseAmt}}" />
+						<input type="hidden" name="PurchaseCurrency" value="978" />
+						<input type="hidden" name="PurchaseCurrencyExponent" value="2" />
+						<input type="hidden" name="OrderID" value="{{OrderID}}" />
+						<input type="hidden" name="CaptureFlag" value="A" />
+						<input type="hidden" name="Signature" value="{{Signature}}" />
+						<input type="hidden" name="SignatureMethod" value="SHA1" />
+						</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div>
+
+            <a href="/portal/">Back to portal</a>
+
+        </div>
+
+    {% endif %}
+
+</div>

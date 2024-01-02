@@ -1,0 +1,100 @@
+{
+  "path": "splynx_jcc_addon",
+  "translate": true,
+  "blocks": {
+    "api": {
+      "title": "API settings",
+      "items": {
+        "api_domain": {
+          "title": "API domain",
+          "description": "API domain (with http:// or https:// and last slash)"
+        },
+        "api_key": {
+          "title": "API key",
+          "description": "API key"
+        },
+        "api_secret": {
+          "title": "API secret",
+          "description": "API secret"
+        }
+      }
+    },
+    "common_settings": {
+      "title": "Common settings",
+      "items": {
+        "splynx_url": {
+          "title": "Splynx url",
+          "description": "Splynx url (without last slash)"
+        },
+        "isProduction": {
+          "title": "Environment",
+          "description": "Environment",
+          "type": "select",
+          "values": {
+            "false": "Sandbox",
+            "true": "Production"
+          },
+          "default": "false"
+        },
+        "serviceFee": {
+          "title": "Service Fee",
+          "description": "Service fee (%)",
+          "default": 0
+        },
+        "add_fee_request": {
+          "title": "Add fee to request",
+          "description": "Add fee (position) to request",
+          "type": "boolean",
+          "default": false
+        },
+        "fee_message": {
+          "title": "Fee message",
+          "description": "If you set service add fee to invoice - set description for Invoice item",
+          "default": "Jcc commission"
+        },
+        "fee_VAT": {
+          "title": "Fee VAT",
+          "description": "Fee VAT (%)",
+          "default": 0
+        },
+        "transaction_fee_category": {
+          "title": "Transaction fee category",
+          "description": "Set id for category of fee transactions (look at `Config / Finance / Transaction categories`)",
+          "default": 5
+        },
+        "bank_statements_group": {
+          "title": "Bank statements group",
+          "description": "Group bank statements by `month` or `day`'",
+          "default": "month",
+          "type": "select",
+          "values": {
+            "month": "Month",
+            "day": "Day"
+          }
+        }
+      }
+    },
+    "per_partner_options": {
+      "title": "Partners settings",
+      "items": {
+        "clientId": {
+          "title": "Client ID",
+          "description": "Client ID in Jcc"
+        },
+        "clientSecret": {
+          "title": "clientSecret",
+          "description": "clientSecret"          
+        },
+		 "clientPassword": {
+          "title": "clientPassword",
+          "description": "clientPassword"          
+        },        
+        "payment_method_id": {
+          "title": "Payment method ID",
+          "description": "Create payment method `Jcc` at `Config / Finance / Payment methods` and enter it's id here  Or simply use existing method id",
+          "default": 4
+        }
+      }
+    }
+  }
+}

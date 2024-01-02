@@ -1,0 +1,44 @@
+<div>
+
+    {% if process_to_payment == true %}
+
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <h4>Pay request #{{ model.invoice.number }}</h4>
+                        <br>
+                        <ul class="list-unstyled">
+                            <li>
+                                Request total: {{ model.getAmount() }} {{ currency }}
+                            </li>
+                            {% if model.isFee() %}
+                                <li>
+                                    Fee: {{ model.getFeeAmount() }} {{ currency }}
+                                </li>
+                                <li>
+                                    Total: {{ model.getTotalAmount() }} {{ currency }}
+                                </li>
+                            {% endif %}
+                        </ul>
+                        <br>
+
+                        <a target="_parent" href="{{ payment_url }}">
+                            <img src="https://www.jccobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div>
+
+            <a href="/portal/">Back to portal</a>
+
+        </div>
+
+    {% endif %}
+
+</div>

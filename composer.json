@@ -1,0 +1,16 @@
+{
+    "name": "splynx/splynx-jcc",
+    "description": "Splynx Jcc Add-on",
+    "keywords": [
+        "splynx"
+    ],
+    "homepage": "https://bitbucket.org/splynx/splynx-jcc",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "require": {
+        "Jcc/rest-api-sdk-php": "^1.7"
+    },
+    "require-dev": {
+        "firephp/firephp-core": "*"
+    }
+}

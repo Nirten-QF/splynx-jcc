@@ -1,0 +1,9 @@
+<div class="site-error">
+
+    <h1>{{ Html.encode(name) }}</h1>
+
+    <div class="alert alert-danger">
+        {{ Html.encode(message) | nl2br | raw }}
+    </div>
+
+</div>

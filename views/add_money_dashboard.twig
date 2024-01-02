@@ -1,0 +1,16 @@
+{% if customer.billing_type == 'prepaid' %}
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Add money by Jcc, {{ customer.name}}!</div>
+                <div class="panel-body">
+                    <br>
+                    <form class="form-inline" action="/Jcc/" method="post">
+                        <input class="input-sm form-control" name="amount" value="50" min="50" style="width: 150px" type="number" placeholder="Amount">
+                        <button style="padding: 4px 12px;" type="submit" class="btn btn-primary">Pay by Jcc</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

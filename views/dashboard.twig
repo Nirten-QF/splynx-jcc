@@ -1,0 +1,86 @@
+{% set count_unpaid_invoices = 0 %}
+{% for invoice in loader.getInvoices() %}
+    {% if invoice.status == "not_paid" %}
+        {% set count_unpaid_invoices = count_unpaid_invoices + 1 %}
+    {% endif %}
+{% endfor %}
+
+{% set count_unpaid_requests = 0 %}
+{% for request in loader.getRequests() %}
+    {% if request.status == "not_paid" %}
+        {% set count_unpaid_requests = count_unpaid_requests + 1 %}
+    {% endif %}
+{% endfor %}
+
+<div class="row">
+
+    {% if count_unpaid_invoices > 0 %}
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Pay your invoices by <strong>JCC</strong></div>
+                <div class="panel-body" style="overflow-x: auto;">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Number</th>
+                            <th>Total</th>
+                            <th>Pay</th>
+                        </tr>
+                        {% for invoice in loader.getInvoices() %}
+                            {% if invoice.status == "not_paid" %}
+                                <tr>
+                                    <td>{{ invoice.number }}</td>
+                                    <td>{{ App.financeFormat(invoice.total, true) }}</td>
+                                    <td>
+                                        <button class="btn btn-xs btn-success jcc_invoice_pay_button"
+                                                data-number="{{ invoice.number }}">Pay
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if count_unpaid_requests > 0 %}
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Pay your requests by <strong>Jcc</strong></div>
+                <div class="panel-body" style="overflow-x: auto;">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Number</th>
+                            <th>Total</th>
+                            <th>Pay</th>
+                        </tr>
+                        {% for request in loader.getRequests() %}
+                            {% if request.status == "not_paid" %}
+                                <tr>
+                                    <td>{{ request.number }}</td>
+                                    <td>{{ App.financeFormat(request.total, true) }}</td>
+                                    <td>
+                                        <button class="btn btn-xs btn-success jcc_request_pay_button"
+                                                data-number="{{ request.number }}">Pay
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+
+<script>
+    $('.jcc_invoice_pay_button').click(function () {
+        open_portal_dialog('add-on--action-link-modal?module=splynx_jcc_addon&name=jcc_pay_invoice_point&id=' + $(this).data('number'));
+    });
+    $('.jcc_request_pay_button').click(function () {
+        open_portal_dialog('add-on--action-link-modal?module=splynx_jcc_addon&name=jcc_pay_request_point&id=' + $(this).data('number'));
+    });
+</script>
